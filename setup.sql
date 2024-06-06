@@ -26,5 +26,21 @@ CREATE TABLE vehicles(
     color varchar(30) NOT NULL,
     odometer int NOT NULL,
     price double NOT NULL,
+    SOLD boolean,
     PRIMARY KEY(vin)
+);
+
+CREATE TABLE inventory(
+	dealership_id int NOT NULL,
+    vin int NOT NULL,
+    PRIMARY KEY(dealership_id),
+    FOREIGN KEY(dealership_id) REFERENCES dealerships(dealership_id),
+    FOREIGN KEY(vin)REFERENCES vehicles(vin)
+);
+
+CREATE TABLE sales_contracts(
+	sales_contracts_id int NOT NULL auto_increment,
+    vin int NOT NULL,
+    PRIMARY KEY(sales_contracts_id),
+    FOREIGN KEY(vin) REFERENCES vehicles(vin)
 );
