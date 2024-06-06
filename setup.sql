@@ -39,8 +39,21 @@ CREATE TABLE inventory(
 );
 
 CREATE TABLE sales_contracts(
-	sales_contracts_id int NOT NULL auto_increment,
+	contract_id int NOT NULL auto_increment,
     vin int NOT NULL,
-    PRIMARY KEY(sales_contracts_id),
+    sales_tax_amount double,
+    recording_fee double,
+    processing_fee double,
+    financing_choice boolean,
+    PRIMARY KEY(contract_id),
+    FOREIGN KEY(vin) REFERENCES vehicles(vin)
+);
+
+CREATE TABLE lease_contracts(
+	contract_id int NOT NULL auto_increment,
+    vin int NOT NULL,
+    expected_ending_value double,
+    lease_fee double,
+    PRIMARY KEY(contract_id),
     FOREIGN KEY(vin) REFERENCES vehicles(vin)
 );
