@@ -1,11 +1,11 @@
 # ---------------------------------------------------------------------- #
-#					       TEST QUERIES									 #
+#					           TEST QUERIES					             #
 # ---------------------------------------------------------------------- #
 
 -- 1. Get all dealerships.
 
--- 	SELECT * 
--- 		FROM dealerships;
+	SELECT * 
+		FROM dealerships;
 
 -- 2. Find all vehicles for a specific dealership.
 
@@ -45,5 +45,15 @@
 -- 		AND model = 'Civic'
 --         AND color = 'Gray';
 
--- 6. Get all sales information for a specific dealer for a specific date range.
+-- 6. Get all sales information for a specific dealership for a specific date range.
+
+-- 	SELECT dealership_name, contract_id, sales_date, customer_name, 
+-- 		customer_email, i.vin, sales_tax_amount, recording_fee, processing_fee, financing_choice
+-- 		FROM inventory AS i
+-- 		JOIN dealerships AS d
+-- 			ON d.dealership_id	= i.dealership_id
+-- 		JOIN sales_contracts AS s
+-- 			ON s.vin = i.vin
+--         WHERE dealership_name = 'Car Craze'    
+-- 			AND sales_date BETWEEN '2024-01-12 00:00:00' AND '2024-05-26 00:00:00';
 
