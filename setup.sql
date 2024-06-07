@@ -1,3 +1,8 @@
+# ---------------------------------------------------------------------- #
+# Target DBMS:           MySQL                                           #
+# Project name:          Car Dealership Database                         #
+# ---------------------------------------------------------------------- #
+
 DROP DATABASE IF EXISTS dealership_db;
 
 CREATE DATABASE IF NOT EXISTS dealership_db;
