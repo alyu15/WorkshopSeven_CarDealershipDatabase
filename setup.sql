@@ -35,6 +35,7 @@ CREATE TABLE inventory(
 
 CREATE TABLE sales_contracts(
 	contract_id int NOT NULL auto_increment,
+    sales_date DATETIME,
     vin int NOT NULL,
     sales_tax_amount decimal(10,2),
     recording_fee decimal(8,2),
@@ -46,6 +47,7 @@ CREATE TABLE sales_contracts(
 
 CREATE TABLE lease_contracts(
 	contract_id int NOT NULL auto_increment,
+    lease_date DATETIME,
     vin int NOT NULL,
     expected_ending_value decimal(10,2),
     lease_fee decimal(8,2),
@@ -189,28 +191,26 @@ INSERT INTO inventory(dealership_id, vin)
 		(4, 33670),
 		(10, 77997);
         
-INSERT INTO sales_contracts(vin, sales_tax_amount, recording_fee, processing_fee, financing_choice)
-	VALUE(10112, 495.00, 100, 295, 'yes'),
-    (44875, 199.75, 100, 495, 'no'),
-    (93742, 149.50, 100, 295, 'yes'),
-    (18224, 499.50, 100, 295, 'no'),
-    (61937, 299.50, 100, 295, 'yes'),
-    (78432, 499.50, 100, 295, 'yes'),
-    (94010, 599.50, 100, 295, 'no'),
-    (11225, 549.5, 100, 295, 'yes'),
-    (18226, 399.50, 100, 495, 'yes'),
-    (99013, 549.75, 100, 495, 'yes');
+INSERT INTO sales_contracts(sales_date, vin, sales_tax_amount, recording_fee, processing_fee, financing_choice)
+	VALUE('2024-01-12 00:00:00', 10112, 495.00, 100, 295, 'yes'),
+		('2024-01-29 00:00:00', 44875, 199.75, 100, 495, 'no'),
+		('2024-02-15 00:00:00', 93742, 149.50, 100, 295, 'yes'),
+		('2024-03-05 00:00:00', 18224, 499.50, 100, 295, 'no'),
+		('2024-03-18 00:00:00', 61937, 299.50, 100, 295, 'yes'),
+		('2024-04-01 00:00:00', 78432, 499.50, 100, 295, 'yes'),
+		('2024-04-10 00:00:00', 94010, 599.50, 100, 295, 'no'),
+		('2024-05-01 00:00:00', 11225, 549.5, 100, 295, 'yes'),
+		('2024-05-15 00:00:00', 18226, 399.50, 100, 495, 'yes'),
+		('2024-05-21 00:00:00', 99013, 549.75, 100, 495, 'yes');
     
-INSERT INTO lease_contracts(vin, expected_ending_value, lease_fee)
-	VALUE(13579, 4495.00, 629.30),
-		(33669, 995.00, 139.30),
-		(33670, 997.50, 139.65),
-		(54321, 5845.00, 818.30),
-		(65837, 2495.00, 349.30),
-		(66708, 2995.00, 419.30),
-		(72654, 4495.00, 629.30),
-		(77883, 2495.00, 349.30),
-        (77998, 3995.00, 559.30),
-        (99012, 5495.00, 769.30);
-
-
+INSERT INTO lease_contracts(lease_date, vin, expected_ending_value, lease_fee)
+	VALUE('2024-01-15 00:00:00', 13579, 4495.00, 629.30),
+		('2024-02-03 00:00:00', 33669, 995.00, 139.30),
+		('2024-03-21 00:00:00', 33670, 997.50, 139.65),
+		('2024-04-05 00:00:00', 54321, 5845.00, 818.30),
+		('2024-04-29 00:00:00', 65837, 2495.00, 349.30),
+		('2024-05-10 00:00:00', 66708, 2995.00, 419.30),
+		('2024-05-24 00:00:00', 72654, 4495.00, 629.30),
+		('2024-05-29 00:00:00', 77883, 2495.00, 349.30),
+		('2024-06-01 00:00:00', 77998, 3995.00, 559.30),
+		('2024-06-05 00:00:00', 99012, 5495.00, 769.30);
