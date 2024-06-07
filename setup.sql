@@ -19,7 +19,7 @@
 
 # ====================================================================== #
 #						       Dealerships								 #
-# ====================================================================== #		
+# ====================================================================== #
 
 	CREATE TABLE dealerships(
 		dealership_id int NOT NULL auto_increment,
@@ -45,10 +45,10 @@
 		sold varchar(3),
 		PRIMARY KEY(vin)
 	);
-    
+
 # ====================================================================== #
 #						        Inventory								 #
-# ====================================================================== #    
+# ====================================================================== #
 
 	CREATE TABLE inventory(
 		inventory_id int NOT NULL auto_increment,
@@ -58,10 +58,10 @@
 		FOREIGN KEY(dealership_id) REFERENCES dealerships(dealership_id),
 		FOREIGN KEY(vin)REFERENCES vehicles(vin)
 	);
-    
+
 # ====================================================================== #
-#						     Sales Contracts						     #       
-# ====================================================================== #     
+#						     Sales Contracts						     #
+# ====================================================================== #
 
 	CREATE TABLE sales_contracts(
 		contract_id int NOT NULL auto_increment,
@@ -72,13 +72,13 @@
 		sales_tax_amount decimal(10,2),
 		recording_fee decimal(8,2),
 		processing_fee decimal(10,2),
-		financing_choice varchar(3),
+		is_financing varchar(3),
 		PRIMARY KEY(contract_id),
 		FOREIGN KEY(vin) REFERENCES vehicles(vin)
 	);
-    
+
 # ====================================================================== #
-#						    Lease Contracts							     #       
+#						    Lease Contracts							     #
 # ====================================================================== #
 
 	CREATE TABLE lease_contracts(
@@ -92,15 +92,15 @@
 		PRIMARY KEY(contract_id),
 		FOREIGN KEY(vin) REFERENCES vehicles(vin)
 	);
-    
+
 # ====================================================================== #
 #					        Populating Tables							 #
 #                       ------------------------	                     #
 #						 												 #
-# ====================================================================== #    
+# ====================================================================== #
 
 # ====================================================================== #
-#						    Dealerships Data							 #   
+#						    Dealerships Data							 #
 # ====================================================================== #
 
 	INSERT INTO dealerships(dealership_name, address, phone_number)
@@ -114,10 +114,10 @@
 			('High Gear Motors','978 Walnut Street','890-123-4567'),
 			('Supreme Cars','654 Birch Road','234-567-8901'),
 			('Precision Auto','876 Elm Avenue','345-678-9012');
-            
+
 # ====================================================================== #
-#						    Vehicles Data								 #      
-# ====================================================================== #            
+#						    Vehicles Data								 #
+# ====================================================================== #
 
 	INSERT INTO vehicles(vin, year, make, model, vehicle_type, color, odometer, price, sold)
 		VALUE(10112,1993,'Ford','Explorer','SUV','Red',525123,9900.00,'yes'),
@@ -180,11 +180,11 @@
 			(88447,2010,'Honda','Fit','Hatchback','Blue',98002,8995.00,'no'),
 			(33670,2008,'Chevrolet','Equinox','SUV','Silver',130002,1995.00,'yes'),
 			(77997,2014,'Toyota','Highlander','SUV','Gray',66002,6995.00,'no');
-            
+
 # ====================================================================== #
 #						    Inventory Data								 #
-# ====================================================================== #            
-			
+# ====================================================================== #
+
 	INSERT INTO inventory(dealership_id, vin)
 		VALUE(3, 10112),
 			(8, 37846),
@@ -246,13 +246,13 @@
 			(7, 88447),
 			(4, 33670),
 			(10, 77997);
-            
+
 # ====================================================================== #
 #						     Sales Contracts						     #
 #						          Data									 #
-# ====================================================================== #           
-			
-	INSERT INTO sales_contracts(sales_date, customer_name, customer_email, vin, sales_tax_amount, recording_fee, processing_fee, financing_choice)
+# ====================================================================== #
+
+	INSERT INTO sales_contracts(sales_date, customer_name, customer_email, vin, sales_tax_amount, recording_fee, processing_fee, is_financing)
 		VALUE('2024-01-12', 'Mia Lee', 'mlee1145@fakemail.com',10112, 495.00, 100, 295, 'yes'),
 			('2024-01-29', 'Leo Wong', 'wongle89@mail.com',44875, 199.75, 100, 495, 'no'),
 			('2024-02-15', 'Ava Singh', 'ava.thesingher@mail.com',93742, 149.50, 100, 295, 'yes'),
@@ -263,12 +263,12 @@
 			('2024-05-01', 'Finn Davis', 'finndavisons@mail.com', 11225, 549.5, 100, 295, 'yes'),
 			('2024-05-15', 'Maya Taylor', 'maytayalor@mail.com', 18226, 399.50, 100, 495, 'yes'),
 			('2024-05-21', 'Alex Miller', 'amilleratamill@fakemail.com', 99013, 549.75, 100, 495, 'yes');
-            
+
 # ====================================================================== #
 #						     Lease Contracts						     #
 #						          Data									 #
 # ====================================================================== # 
-		
+
 	INSERT INTO lease_contracts(lease_date, customer_name, customer_email, vin, expected_ending_value, lease_fee)
 		VALUE('2024-01-15', 'Owen Patel', 'owenpatelmails@email.com', 13579, 4495.00, 629.30),
 			('2024-02-03', 'Ethan Santos', 'losethansantos@fakemail.com', 33669, 995.00, 139.30),
